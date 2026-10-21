@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BURGER — A Craft of Flavor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #faf8f5;
+            --text-main: #1a1a1a;
+            --text-muted: #555555;
+            --accent-color: #8c4a32;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-main);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Section 1: Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            padding: 0 8rem;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.25) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #ffffff;
+            max-width: 750px;
+        }
+
+        .hero-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: 5.5rem;
+            font-weight: 600;
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: #dddddd;
+            max-width: 540px;
+            line-height: 1.7;
+            border-left: 2px solid var(--accent-color);
+            padding-left: 1.2rem;
+        }
+
+        /* General Section Layout */
+        section {
+            padding: 7rem 8rem;
+        }
+
+        .section-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-serif);
+            font-size: 3.2rem;
+            font-weight: 600;
+            margin-bottom: 4rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Section 2: Overview */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .text-block h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .text-block p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .text-block blockquote {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            margin-top: 2rem;
+            border-left: none;
+            padding-left: 0;
+        }
+
+        .image-card {
+            width: 100%;
+            height: 480px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .content-grid.reverse .image-card-container {
+            order: 1;
+        }
+
+        .content-grid.reverse .text-block-container {
+            order: 2;
+        }
+
+        /* Tables Styling */
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 4rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+            background-color: #ffffff;
+        }
+
+        th {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            padding: 1.25rem 1.5rem;
+        }
+
+        td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            color: var(--text-main);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .table-day {
+            background-color: #f2efe9;
+            font-weight: 600;
+            width: 18%;
+            color: var(--text-main);
+        }
+
+        .highlight-cell {
+            background-color: rgba(140, 74, 50, 0.08);
+            color: var(--accent-color);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .category-cell {
+            background-color: #f2efe9;
+            font-weight: 600;
+            vertical-align: middle;
+            width: 25%;
+        }
+
+        .cost-col {
+            text-align: right;
+        }
+
+        th.cost-col {
+            text-align: right;
+        }
+
+        /* Section 4: Photo Journal / Visual Gallery */
+        .journal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 3rem;
+        }
+
+        .journal-header .section-heading {
+            margin-bottom: 0;
+        }
+
+        .journal-hint {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 280px;
+            text-align: right;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 480px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 15, 15, 0.75);
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h4 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            transform: translateY(15px);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.95rem;
+            color: #dddddd;
+            line-height: 1.6;
+            transform: translateY(15px);
+            transition: transform 0.4s ease 0.05s;
+        }
+
+        .gallery-item:hover .gallery-overlay h4,
+        .gallery-item:hover .gallery-overlay p {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #141414;
+            color: #ffffff;
+            text-align: center;
+            padding: 4rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        footer p {
+            color: #888888;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            header {
+                padding: 1.2rem 2rem;
+            }
+            .hero {
+                padding: 0 3rem;
+            }
+            .hero-title {
+                font-size: 4rem;
+            }
+            section {
+                padding: 5rem 3rem;
+            }
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .content-grid.reverse .image-card-container,
+            .content-grid.reverse .text-block-container {
+                order: unset;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .journal-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            .journal-hint {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">BURGER.</a>
+        <ul class="nav-links">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#craft">The Craft</a></li>
+            <li><a href="#menu">Menu & Pricing</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+        </ul>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle">The Art of the Ultimate Bite</p>
+            <h1 class="hero-title">A Symphony of Flavors.</h1>
+            <p class="hero-description">Juicy patties, toasted brioche buns, and melted artisanal cheese. Discover the absolute pinnacle of burger craftsmanship.</p>
+        </div>
+    </section>
+
+    <section id="overview">
+        <p class="section-tag">01 / Overview</p>
+        <h2 class="section-heading">More than just a meal.</h2>
+        
+        <div class="content-grid">
+            <div class="text-block text-block-container">
+                <h3>The Perfect Balance</h3>
+                <p>A great burger is an exercise in harmony. Every element—from the char on the beef to the crisp crunch of fresh lettuce and the tang of signature sauce—plays a vital role.</p>
+                <p>What makes a masterclass burger special is the quality of ingredients and the precise timing of the smash. Every bite delivers a rich, savory experience.</p>
+                <blockquote>“Good food is often simple, but it demands absolute perfection in execution.”</blockquote>
+            </div>
+            <div class="image-card image-card-container">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1000&auto=format&fit=crop" alt="Juicy Gourmet Burger">
+            </div>
+        </div>
+    </section>
+
+    <section id="craft" style="background-color: #f2efe9;">
+        <p class="section-tag">02 / The Craft</p>
+        <h2 class="section-heading">Slow down. Savor every layer.</h2>
+        
+        <div class="content-grid reverse">
+            <div class="text-block text-block-container">
+                <h3>Anatomy of Excellence</h3>
+                <p>Beyond fast food shortcuts, gourmet burger crafting is a culinary art form. High-grade cuts like chuck, brisket, and short rib are ground fresh daily for optimal marbling.</p>
+                <p>Griddled to a crispy, caramelized crust while keeping the interior tender and pink, paired with melting cheddar and toasted buttered buns.</p>
+                <p>Sometimes the most satisfying culinary moments are found in a perfectly crafted classic.</p>
+            </div>
+            <div class="image-card image-card-container">
+                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=1000&auto=format&fit=crop" alt="Burger Ingredients Preparation">
+            </div>
+        </div>
+    </section>
+
+    <!-- TABLES SECTION -->
+    <section id="menu">
+        <p class="section-tag">03 / Menu & Guide</p>
+        <h2 class="section-heading">Three Signature Styles.</h2>
+        <p style="color: var(--text-muted); margin-bottom: 3rem; margin-top: -2rem;">Explore our curated selection of top-tier burger profiles.</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Style</th>
+                        <th>Patty</th>
+                        <th>Cheese & Toppings</th>
+                        <th>Signature Sauce</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="table-day">The Classic</td>
+                        <td>Single Smash Beef</td>
+                        <td>American Cheese, Pickles, Onions</td>
+                        <td>House Special Spread</td>
+                    </tr>
+                    <tr>
+                        <td class="table-day">The Smokehouse</td>
+                        <td>Double Chuck Patty</td>
+                        <td>Cheddar, Crispy Bacon, Onion Rings</td>
+                        <td>Smoky Barbecue Glaze</td>
+                    </tr>
+                    <tr>
+                        <td class="table-day">The Truffle</td>
+                        <td colspan="2" class="highlight-cell">Wagyu Beef with Brie & Mushrooms</td>
+                        <td>Truffle Aioli</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 5rem;">
+            <h3 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">Menu Pricing & Sides</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2.5rem;">A standard pricing breakdown for burgers and accompanying sides.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Item</th>
+                            <th class="cost-col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="category-cell">Burgers</td>
+                            <td>Classic Smash</td>
+                            <td class="cost-col">$12.00</td>
+                        </tr>
+                        <tr>
+                            <td>Smokehouse Stack</td>
+                            <td class="cost-col">$16.50</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="category-cell">Sides</td>
+                            <td>Truffle Fries</td>
+                            <td class="cost-col">$6.50</td>
+                        </tr>
+                        <tr>
+                            <td>Craft Milkshake</td>
+                            <td class="cost-col">$7.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="journal-header">
+            <div>
+                <p class="section-tag">04 / Photo Journal</p>
+                <h2 class="section-heading">Burgers in three frames.</h2>
+            </div>
+            <p class="journal-hint">Move your mouse over each photograph to reveal the story behind the image.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" style="cursor: default;">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1000&auto=format&fit=crop" alt="Gourmet Burger Showcase">
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1551782450-17144efb9c50?q=80&w=1000&auto=format&fit=crop" alt="Classic Cheeseburger Heritage">
+                <div class="gallery-overlay">
+                    <h4>The Tradition</h4>
+                    <p>Timeless combinations of melted cheese and premium beef perfected over decades.</p>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=1000&auto=format&fit=crop" alt="Late Night Griddle">
+                <div class="gallery-overlay">
+                    <h4>Griddle Magic</h4>
+                    <p>Sizzling patties fresh off the hot flat top, wrapped in toasted buns after dark.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 THE BURGER Journal. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
