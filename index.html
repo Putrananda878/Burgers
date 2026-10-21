@@ -7,10 +7,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #faf8f5;
-            --text-main: #1a1a1a;
-            --text-muted: #555555;
-            --accent-color: #8c4a32;
+            --bg-color: #121212;
+            --surface-color: #1a1a1a;
+            --surface-elevated: #242424;
+            --text-main: #f5f2eb;
+            --text-muted: #a0a0a0;
+            --accent-color: #d4af37;
+            --accent-glow: rgba(212, 175, 55, 0.15);
+            --border-color: rgba(255, 255, 255, 0.08);
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Plus Jakarta Sans', sans-serif;
         }
@@ -38,23 +42,28 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(250, 248, 245, 0.95);
-            backdrop-filter: blur(8px);
+            background-color: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(12px);
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1.5rem 4rem;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .logo {
             font-family: var(--font-serif);
             font-size: 1.8rem;
             font-weight: 700;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.2em;
             color: var(--text-main);
             text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: var(--accent-color);
         }
 
         .nav-links {
@@ -69,7 +78,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            color: var(--text-main);
+            color: var(--text-muted);
             transition: color 0.3s ease;
         }
 
@@ -93,14 +102,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.45) 60%, rgba(0, 0, 0, 0.25) 100%);
+            background: linear-gradient(to right, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.7) 60%, rgba(18, 18, 18, 0.4) 100%);
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            color: #ffffff;
+            color: var(--text-main);
             max-width: 750px;
         }
 
@@ -110,7 +119,7 @@
             letter-spacing: 0.25em;
             margin-bottom: 1.5rem;
             font-weight: 600;
-            color: #e0e0e0;
+            color: var(--accent-color);
         }
 
         .hero-title {
@@ -125,7 +134,7 @@
         .hero-description {
             font-size: 1.15rem;
             font-weight: 300;
-            color: #dddddd;
+            color: var(--text-muted);
             max-width: 540px;
             line-height: 1.7;
             border-left: 2px solid var(--accent-color);
@@ -152,6 +161,7 @@
             font-weight: 600;
             margin-bottom: 4rem;
             letter-spacing: -0.01em;
+            color: var(--text-main);
         }
 
         /* Section 2: Overview */
@@ -186,25 +196,28 @@
             margin-top: 2rem;
             border-left: none;
             padding-left: 0;
+            border-left: 2px solid var(--accent-color);
+            padding-left: 1.2rem;
         }
 
         .image-card {
             width: 100%;
             height: 480px;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid var(--border-color);
         }
 
         .image-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .image-card:hover img {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
         .content-grid.reverse .image-card-container {
@@ -220,9 +233,10 @@
             width: 100%;
             overflow-x: auto;
             margin-bottom: 4rem;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
+            background-color: var(--surface-color);
         }
 
         table {
@@ -230,22 +244,23 @@
             border-collapse: collapse;
             text-align: left;
             font-size: 0.95rem;
-            background-color: #ffffff;
+            background-color: transparent;
         }
 
         th {
-            background-color: #1a1a1a;
-            color: #ffffff;
+            background-color: #0f0f0f;
+            color: var(--accent-color);
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.75rem;
             letter-spacing: 0.15em;
             padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
         td {
             padding: 1.25rem 1.5rem;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+            border-bottom: 1px solid var(--border-color);
             color: var(--text-main);
         }
 
@@ -254,24 +269,25 @@
         }
 
         .table-day {
-            background-color: #f2efe9;
+            background-color: var(--surface-elevated);
             font-weight: 600;
             width: 18%;
-            color: var(--text-main);
+            color: var(--accent-color);
         }
 
         .highlight-cell {
-            background-color: rgba(140, 74, 50, 0.08);
+            background-color: var(--accent-glow);
             color: var(--accent-color);
             font-weight: 600;
             text-align: center;
         }
 
         .category-cell {
-            background-color: #f2efe9;
+            background-color: var(--surface-elevated);
             font-weight: 600;
             vertical-align: middle;
             width: 25%;
+            color: var(--accent-color);
         }
 
         .cost-col {
@@ -310,10 +326,11 @@
         .gallery-item {
             position: relative;
             height: 480px;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 1px solid var(--border-color);
         }
 
         .gallery-item img {
@@ -333,8 +350,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(15, 15, 15, 0.75);
-            backdrop-filter: blur(4px);
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(8px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -352,7 +369,7 @@
         .gallery-overlay h4 {
             font-family: var(--font-serif);
             font-size: 2rem;
-            color: #ffffff;
+            color: var(--text-main);
             margin-bottom: 0.75rem;
             font-weight: 500;
             transform: translateY(15px);
@@ -361,7 +378,7 @@
 
         .gallery-overlay p {
             font-size: 0.95rem;
-            color: #dddddd;
+            color: var(--text-muted);
             line-height: 1.6;
             transform: translateY(15px);
             transition: transform 0.4s ease 0.05s;
@@ -374,16 +391,17 @@
 
         /* Footer */
         footer {
-            background-color: #141414;
-            color: #ffffff;
+            background-color: #0c0c0c;
+            color: var(--text-main);
             text-align: center;
             padding: 4rem;
             font-size: 0.9rem;
             letter-spacing: 0.05em;
+            border-top: 1px solid var(--border-color);
         }
 
         footer p {
-            color: #888888;
+            color: var(--text-muted);
         }
 
         /* Responsive Design */
@@ -460,7 +478,7 @@
         </div>
     </section>
 
-    <section id="craft" style="background-color: #f2efe9;">
+    <section id="craft" style="background-color: #161616;">
         <p class="section-tag">02 / The Craft</p>
         <h2 class="section-heading">Slow down. Savor every layer.</h2>
         
@@ -516,7 +534,7 @@
         </div>
 
         <div style="margin-top: 5rem;">
-            <h3 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem;">Menu Pricing & Sides</h3>
+            <h3 style="font-family: var(--font-serif); font-size: 2.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-main);">Menu Pricing & Sides</h3>
             <p style="color: var(--text-muted); margin-bottom: 2.5rem;">A standard pricing breakdown for burgers and accompanying sides.</p>
             
             <div class="table-container">
